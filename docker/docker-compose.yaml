@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  test-spring-web:
+    container_name: "test-spring-web"
+    image: bastinjul/test-spring-web
+    build:
+      context: test-spring-web
+    ports:
+      - "8090:8080"
+    depends_on:
+    - db
+    environment:
+      DB_URL: jdbc:postgresql://spring-web-vs-flux-db:5432/springtest
+      DB_USER: postgres
+      DB_PWD: postgres
+
+  test-spring-webflux:
+    container_name: "test-spring-webflux"
+    image: bastinjul/test-spring-webflux
+    build:
+      context: test-spring-webflux
+    ports:
+      - "8091:8080"
+    depends_on:
+      - db
+    environment:
+      DB_URL: jdbc:postgresql://spring-web-vs-flux-db:5432/springtest
+      DB_USER: postgres
+      DB_PWD: postgres
+
+  db:
+    container_name: "spring-web-vs-flux-db"
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: springtest
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
