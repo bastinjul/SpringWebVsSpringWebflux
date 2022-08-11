@@ -11,9 +11,9 @@ services:
     depends_on:
     - db
     environment:
-      DB_URL: jdbc:postgresql://spring-web-vs-flux-db:5432/springtest
-      DB_USER: postgres
-      DB_PWD: postgres
+      DB_URL: jdbc:postgresql://spring-web-vs-flux-db:5432/springweb
+      DB_USER: springweb
+      DB_PWD: springweb
 
   test-spring-webflux:
     container_name: "test-spring-webflux"
@@ -25,9 +25,9 @@ services:
     depends_on:
       - db
     environment:
-      DB_URL: jdbc:postgresql://spring-web-vs-flux-db:5432/springtest
-      DB_USER: postgres
-      DB_PWD: postgres
+      DB_URL: r2dbc:postgresql://spring-web-vs-flux-db:5432/springflux
+      DB_USER: springflux
+      DB_PWD: springflux
 
   db:
     container_name: "spring-web-vs-flux-db"
@@ -35,6 +35,10 @@ services:
     restart: always
     environment:
       POSTGRES_DB: springtest
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      DATABASES: springweb,springflux
     ports:
       - "5433:5432"
+    volumes:
+      - ./postgres/db_init.sh:/docker-entrypoint-initdb.d/db_init.sh

@@ -17,7 +17,10 @@ public class Book {
     @Column(nullable = false)
     private String summary;
 
-    @ManyToMany(mappedBy = "books")
+    @Transient
+    private List<Long> authorIds;
+
+    @Transient
     private List<Author> authors;
 
     public Book() {

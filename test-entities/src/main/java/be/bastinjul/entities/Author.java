@@ -24,10 +24,10 @@ public class Author {
     @Column(name = "death_date")
     private Calendar deathDate;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "book_author",
-            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"))
+    @Transient
+    private List<Long> bookIds;
+
+    @Transient
     private List<Book> books;
 
     public Author() {
@@ -72,6 +72,14 @@ public class Author {
 
     public void setDeathDate(Calendar deathDate) {
         this.deathDate = deathDate;
+    }
+
+    public List<Long> getBookIds() {
+        return bookIds;
+    }
+
+    public void setBookIds(List<Long> bookIds) {
+        this.bookIds = bookIds;
     }
 
     public List<Book> getBooks() {
