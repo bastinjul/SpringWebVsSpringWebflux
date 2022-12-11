@@ -1,6 +1,6 @@
 package be.bastinjul.testspringweb.controllers;
 
-import be.bastinjul.entities.Book;
+import be.bastinjul.testspringweb.entities.Book;
 import be.bastinjul.testspringweb.repositories.BookRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

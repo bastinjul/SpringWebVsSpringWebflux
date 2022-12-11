@@ -1,6 +1,6 @@
-package be.bastinjul.entities;
+package be.bastinjul.testspringweb.entities;
 
-import be.bastinjul.entities.composite.BookAuthorCompositeKey;
+import be.bastinjul.testspringweb.entities.composite.BookAuthorCompositeKey;
 
 import javax.persistence.*;
 

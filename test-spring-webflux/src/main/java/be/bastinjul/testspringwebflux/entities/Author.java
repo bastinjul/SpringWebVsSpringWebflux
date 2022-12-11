@@ -1,15 +1,20 @@
-package be.bastinjul.entities;
+package be.bastinjul.testspringwebflux.entities;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "author")
+@JsonInclude(value = JsonInclude.Include.NON_NULL)
 public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     @Column(nullable = false)
@@ -19,10 +24,10 @@ public class Author {
     private String lastname;
 
     @Column(name = "birth_date", nullable = false)
-    private Calendar birthDate;
+    private Date birthDate;
 
     @Column(name = "death_date")
-    private Calendar deathDate;
+    private Date deathDate;
 
     @Transient
     private List<Long> bookIds;
@@ -58,19 +63,19 @@ public class Author {
         this.lastname = lastname;
     }
 
-    public Calendar getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Calendar birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
-    public Calendar getDeathDate() {
+    public Date getDeathDate() {
         return deathDate;
     }
 
-    public void setDeathDate(Calendar deathDate) {
+    public void setDeathDate(Date deathDate) {
         this.deathDate = deathDate;
     }
 

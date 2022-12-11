@@ -1,7 +1,9 @@
 package be.bastinjul.testspringwebflux.repositories;
 
-import be.bastinjul.entities.Author;
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import be.bastinjul.testspringwebflux.entities.Author;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
+import org.springframework.stereotype.Repository;
 
-public interface AuthorRepository extends ReactiveCrudRepository<Author, Long> {
+@Repository
+public interface AuthorRepository extends R2dbcRepository<Author, Long> {
 }

@@ -1,7 +1,10 @@
 package be.bastinjul.testspringwebflux.repositories;
 
-import be.bastinjul.entities.Book;
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
-public interface BookRepository extends ReactiveCrudRepository<Book, Long> {
+import be.bastinjul.testspringwebflux.entities.Book;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface BookRepository extends R2dbcRepository<Book, Long> {
 }

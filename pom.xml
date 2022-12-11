@@ -10,7 +10,6 @@
     </parent>
 
     <modules>
-        <module>test-entities</module>
         <module>test-spring-web</module>
         <module>test-spring-webflux</module>
         <module>perf_tests</module>

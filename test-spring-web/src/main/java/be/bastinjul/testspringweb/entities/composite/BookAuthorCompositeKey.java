@@ -1,4 +1,4 @@
-package be.bastinjul.entities.composite;
+package be.bastinjul.testspringweb.entities.composite;
 
 import java.io.Serializable;
 import java.util.Objects;
